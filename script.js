@@ -85,54 +85,43 @@ const createParticles = () => {
 };
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialisation des barres de compétences et des particules
-    if (typeof animateSkillBars === "function") animateSkillBars();
-    if (typeof createParticles === "function") createParticles();
+const form = document.getElementById('contact-form');
 
-    // Gestion du formulaire de contact
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-            console.log("🧠 Formulaire en cours de soumission...");
-            const formData = new FormData(form);
+    console.log("🧠 Formulaire en cours de soumission...");
+    const formData = new FormData(form);
 
-            try {
-                const response = await fetch(form.action, {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                // On vérifie si la requête s'est bien passée (statut 2xx)
-                if (!response.ok) {
-                    throw new Error(`Erreur serveur : ${response.status}`);
-                }
-
-                // ✅ Peu importe la réponse, on redirige
-                console.log("✅ On redirige vers merci.html...");
-                window.location.href = "merci.html";
-            } catch (error) {
-                console.error("❌ Une erreur est survenue :", error);
-                alert("Erreur d'envoi. Vérifie ta connexion et réessaie.");
+    try {
+        await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
             }
         });
-    }
 
+        // ✅ Peu importe la réponse, on redirige
+        console.log("✅ On redirige vers merci.html...");
+        window.location.href = "merci.html";
+    } catch (error) {
+        console.error("❌ Une erreur est survenue :", error);
+        alert("Erreur d'envoi. Vérifie ta connexion et réessaie.");
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    animateSkillBars();
+    createParticles();
+    
     // Smooth scroll pour les liens d'ancrage
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            // On ignore si le href est juste "#"
-            const href = this.getAttribute('href');
-            if (href === "#") return;
-
-            const target = document.querySelector(href);
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                e.preventDefault();
                 window.scrollTo({
                     top: target.offsetTop - 80,
                     behavior: 'smooth'
