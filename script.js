@@ -84,23 +84,42 @@ const createParticles = () => {
     }
 };
 
-const form = document.getElementById('contact-form');
+    const form = document.getElementById('contact-form');
 
-form.addEventListener('submit', (e) => {
-    console.log("🧠 Formulaire en cours de soumission...");
-    
-    // Optionnel : log les champs
-    console.log("Nom :", form.name.value);
-    console.log("Email :", form.email.value);
-    console.log("Sujet :", form.subject.value);
-    console.log("Message :", form.message.value);
-    console.log("Consentement accepté :", form.consent.checked);
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // on empêche la soumission par défaut
 
-    // Si tu veux empêcher l'envoi temporairement pour tester
-    e.preventDefault(); // ← décommente ça pour tester sans que FormSubmit prenne la main
-});
+        console.log("🧠 Formulaire en cours de soumission...");
+        console.log("Nom :", form.name.value);
+        console.log("Email :", form.email.value);
+        console.log("Sujet :", form.subject.value);
+        console.log("Message :", form.message.value);
+        console.log("Consentement accepté :", form.consent.checked);
 
-// Initialisation
+        // Création des données à envoyer
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                console.log("✅ Message envoyé !");
+                window.location.href = "merci.html"; // Redirection manuelle
+            } else {
+                console.error("❌ Erreur lors de l'envoi :", response.statusText);
+            }
+        } catch (error) {
+            console.error("⚠️ Exception :", error);
+        }
+    });
+
+
 document.addEventListener('DOMContentLoaded', () => {
     animateSkillBars();
     createParticles();
