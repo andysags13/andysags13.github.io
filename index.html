@@ -1,1 +1,852 @@
-Hello world
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Étudiant EPITECH | Développeur Fullstack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neonPurple: '#bc00dd',
+                        neonCyan: '#00f0ff',
+                        darkBg: '#0a0a10',
+                        cardBg: '#121220'
+                    },
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow-purple': '0 0 15px rgba(188, 0, 221, 0.7)',
+                        'glow-cyan': '0 0 15px rgba(0, 240, 255, 0.7)',
+                        'glow-hover': '0 0 25px rgba(188, 0, 221, 0.9)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for extra effects */
+        body {
+            background-color: #0a0a10;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(188, 0, 221, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 60%, rgba(0, 240, 255, 0.1) 0%, transparent 25%);
+            color: #e0e0ff;
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #bc00dd, #00f0ff);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .neon-border {
+            border: 1px solid rgba(188, 0, 221, 0.3);
+            box-shadow: inset 0 0 10px rgba(188, 0, 221, 0.3);
+        }
+        
+        .skill-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #bc00dd, #00f0ff);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 240, 255, 0.25);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, #bc00dd, #00f0ff);
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(188, 0, 221, 0.8);
+        }
+        
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #bc00dd, #00f0ff, transparent);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .timeline-item {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Floating Particles Background -->
+    <div id="particles" class="fixed inset-0 z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full py-6 z-50 bg-darkBg bg-opacity-80 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="h-8 w-8 rounded-full bg-neonPurple flex items-center justify-center">
+                        <div class="h-5 w-5 rounded-full bg-neonCyan animate-pulse"></div>
+                    </div>
+                    <span class="text-xl font-bold text-white">Portfolio</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-12">
+                    <a href="#home" class="nav-link text-white hover:text-neonCyan">Accueil</a>
+                    <a href="#about" class="nav-link text-white hover:text-neonCyan">À Propos</a>
+                    <a href="#projects" class="nav-link text-white hover:text-neonCyan">Projets</a>
+                    <a href="#experience" class="nav-link text-white hover:text-neonCyan">Expériences</a>
+                    <a href="#contact" class="nav-link text-white hover:text-neonCyan">Contact</a>
+                </div>
+                
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 py-4 px-6 bg-cardBg rounded-lg mx-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-white hover:text-neonCyan">Accueil</a>
+                <a href="#about" class="nav-link text-white hover:text-neonCyan">À Propos</a>
+                <a href="#projects" class="nav-link text-white hover:text-neonCyan">Projets</a>
+                <a href="#experience" class="nav-link text-white hover:text-neonCyan">Expériences</a>
+                <a href="#contact" class="nav-link text-white hover:text-neonCyan">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative z-10 pt-40 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 relative pb-8 hero-title">
+                        <span class="block mb-2 text-white">Étudiant à EPITECH Bénin</span>
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonCyan glow-text">Développeur Passionné</span>
+                    </h1>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        <span class="text-neonPurple">Code.</span>
+                        <span class="text-white">Créativité.</span>
+                        <span class="text-neonCyan">Impact.</span>
+                    </h2>
+                    <p class="text-xl mb-8 text-gray-300">Fullstack Développeur | Gagnant de Hackathon | Expert C/C++</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 rounded-md font-medium bg-gradient-to-r from-neonPurple to-purple-800 text-white hover:shadow-glow-hover transition-all">
+                            Voir mes Projets
+                        </a>
+                        <a href="#contact" class="px-6 py-3 rounded-md font-medium border border-neonPurple text-white hover:bg-neonPurple hover:bg-opacity-20 transition-all">
+                            Me Contacter
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-neonPurple to-neonCyan blur-xl opacity-20 animate-pulse-slow"></div>
+                        <div class="relative rounded-full overflow-hidden border-4 border-white shadow-glow-purple">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-full w-64 h-64 md:w-80 md:h-80"></div>
+                        </div>
+                        
+                        <div class="absolute top-4 right-4 bg-cardBg p-4 rounded-full border border-neonCyan shadow-glow-cyan">
+                            <span class="text-neonCyan text-xl font-bold">C++</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-cardBg p-4 rounded-full border border-neonPurple shadow-glow-purple">
+                            <span class="text-neonPurple text-xl font-bold">IA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-darkBg relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+                    À Propos de Moi
+                    <div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neonCyan to-transparent -bottom-2"></div>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-400">Passionné par la technologie et le développement innovant</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-neonCyan">Mon Parcours</h3>
+                    <p class="mb-6">
+                        Étudiant en 2e année à EPITECH Bénin, je me spécialise dans la programmation système et le développement fullstack.
+                        Avec une passion pour l'innovation et la création de solutions techniques complexes, je combine expertise technique 
+                        et créativité pour repousser les limites du possible.
+                    </p>
+                    <p class="mb-6">
+                        Gagnant de plusieurs hackathons, je transforme des idées novatrices en solutions concrètes. Mon parcours à EPITECH 
+                        m'a forgé un mindset de winner et une capacité à résoudre des problèmes complexes avec élégance.
+                    </p>
+                    <div class="flex items-center mt-8">
+                        <div class="mr-4 p-2 bg-cardBg rounded-full border border-neonCyan">
+                            <i class="fas fa-trophy text-2xl text-neonCyan"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Champion de Hackathon</h4>
+                            <p>Solutions innovantes et design primé</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 text-neonPurple">Mes Compétences</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">C / C++</span>
+                                <span class="text-neonCyan">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Laravel / PHP</span>
+                                <span class="text-neonCyan">55%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Haskell</span>
+                                <span class="text-neonCyan">65%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Intelligence Artificielle Générative</span>
+                                <span class="text-neonCyan">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" data-width="80"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">IoT</span>
+                                <span class="text-neonCyan">50%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" data-width="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <div class="mr-2 text-neonPurple">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <span>Architecture systèmes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-neonPurple">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-neonPurple">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <span>IA générative</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-neonPurple">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <span>Backend robuste</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+                    Mes Projets
+                    <div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neonPurple to-transparent -bottom-2"></div>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-400">Créations techniques alliant innovation et élégance dans le code</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-cardBg rounded-xl overflow-hidden border border-neonCyan border-opacity-30 shadow-glow-cyan transition-transform duration-300">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Arcade</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-neonPurple bg-opacity-20 text-neonPurple rounded text-sm">C++</span>
+                                    <span class="px-2 py-1 bg-neonCyan bg-opacity-20 text-neonCyan rounded text-sm">SFML</span>
+                                    <span class="px-2 py-1 bg-purple-500 bg-opacity-20 text-purple-400 rounded text-sm">Jeu</span>
+                                </div>
+                            </div>
+                            <div class="bg-neonCyan bg-opacity-10 p-2 rounded-full">
+                                <i class="fas fa-gamepad text-neonCyan"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Jeu de rôle en ligne avec moteur graphique personnalisé implémentant des algorithmes de pathfinding et un système de combat complexe.</p>
+                        <a href="#" class="inline-flex items-center text-neonPurple hover:text-neonCyan">
+                            Voir sur GitHub <i class="ml-2 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-cardBg rounded-xl overflow-hidden border border-neonPurple border-opacity-30 shadow-glow-purple transition-transform duration-300">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Need4Steak</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-neonPurple bg-opacity-20 text-neonPurple rounded text-sm">C++</span>
+                                    <span class="px-2 py-1 bg-neonCyan bg-opacity-20 text-neonCyan rounded text-sm">IoT</span>
+                                    <span class="px-2 py-1 bg-red-500 bg-opacity-20 text-red-400 rounded text-sm">Voiture autonome</span>
+                                </div>
+                            </div>
+                            <div class="bg-neonPurple bg-opacity-10 p-2 rounded-full">
+                                <i class="fas fa-car text-neonPurple"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Système de conduite autonome implémentant des algorithmes de navigation avancés avec gestion en temps réel de capteurs IoT.</p>
+                        <a href="#" class="inline-flex items-center text-neonPurple hover:text-neonCyan">
+                            Voir sur GitHub <i class="ml-2 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-cardBg rounded-xl overflow-hidden border border-neonCyan border-opacity-30 shadow-glow-cyan transition-transform duration-300">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Arcade Game</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-neonPurple bg-opacity-20 text-neonPurple rounded text-sm">C++</span>
+                                    <span class="px-2 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded text-sm">SFML</span>
+                                    <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-400 rounded text-sm">Jeu d'arcade</span>
+                                </div>
+                            </div>
+                            <div class="bg-neonCyan bg-opacity-10 p-2 rounded-full">
+                                <i class="fas fa-ghost text-neonCyan"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Moteur de jeu d'arcade avec système de modules dynamiques, gestion de scores et interface utilisateur rétro.</p>
+                        <a href="#" class="inline-flex items-center text-neonPurple hover:text-neonCyan">
+                            Voir sur GitHub <i class="ml-2 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-cardBg rounded-xl overflow-hidden border border-neonPurple border-opacity-30 shadow-glow-purple transition-transform duration-300">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Gestion Scolaire</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-neonPurple bg-opacity-20 text-neonPurple rounded text-sm">Laravel</span>
+                                    <span class="px-2 py-1 bg-blue-500 bg-opacity-20 text-blue-400 rounded text-sm">PHP</span>
+                                    <span class="px-2 py-1 bg-indigo-500 bg-opacity-20 text-indigo-400 rounded text-sm">MySQL</span>
+                                </div>
+                            </div>
+                            <div class="bg-neonPurple bg-opacity-10 p-2 rounded-full">
+                                <i class="fas fa-school text-neonPurple"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Application web complète de gestion scolaire avec tableaux de bord, emplois du temps et gestion des notes.</p>
+                        <a href="#" class="inline-flex items-center text-neonPurple hover:text-neonCyan">
+                            Voir sur GitHub <i class="ml-2 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-cardBg rounded-xl overflow-hidden border border-neonCyan border-opacity-30 shadow-glow-cyan transition-transform duration-300">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Assistant IA Générative</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-neonPurple bg-opacity-20 text-neonPurple rounded text-sm">Python</span>
+                                    <span class="px-2 py-1 bg-teal-500 bg-opacity-20 text-teal-400 rounded text-sm">ML</span>
+                                    <span class="px-2 py-1 bg-pink-500 bg-opacity-20 text-pink-400 rounded text-sm">Transformers</span>
+                                </div>
+                            </div>
+                            <div class="bg-neonCyan bg-opacity-10 p-2 rounded-full">
+                                <i class="fas fa-robot text-neonCyan"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Assistant conversationnel basé sur des modèles génératifs et capable de créer du contenu original en temps réel.</p>
+                        <a href="#" class="inline-flex items-center text-neonPurple hover:text-neonCyan">
+                            Voir sur GitHub <i class="ml-2 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-cardBg rounded-xl overflow-hidden border border-neonPurple border-opacity-30 shadow-glow-purple transition-transform duration-300">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Monitoring IoT</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-neonPurple bg-opacity-20 text-neonPurple rounded text-sm">C++</span>
+                                    <span class="px-2 py-1 bg-amber-500 bg-opacity-20 text-amber-400 rounded text-sm">Arduino</span>
+                                    <span class="px-2 py-1 bg-lime-500 bg-opacity-20 text-lime-400 rounded text-sm">Raspberry Pi</span>
+                                </div>
+                            </div>
+                            <div class="bg-neonPurple bg-opacity-10 p-2 rounded-full">
+                                <i class="fas fa-wifi text-neonPurple"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Système de surveillance avec réseau de capteurs et tableau de bord en temps réel pour l'analyse environnementale.</p>
+                        <a href="#" class="inline-flex items-center text-neonPurple hover:text-neonCyan">
+                            Voir sur GitHub <i class="ml-2 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-darkBg relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+                    Expériences & Engagements
+                    <div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neonCyan to-transparent -bottom-2"></div>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-400">Contributions actives dans l'écosystème tech et associatif</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-8 relative">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item pl-8 relative">
+                        <div class="absolute -left-2 mt-2 w-4 h-4 rounded-full bg-neonPurple border-4 border-darkBg z-10"></div>
+                        <div class="bg-cardBg rounded-xl p-6 border border-neonCyan border-opacity-20">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-3 bg-neonCyan bg-opacity-10 p-3 rounded-lg">
+                                    <i class="fas fa-users text-neonCyan text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">TEK-RÉSEAU</h3>
+                                    <p class="text-gray-400">Membre Actif | 2022 - Présent</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">
+                                Participe activement à des projets collaboratifs et à des événements tech pour promouvoir l'inclusion numérique 
+                                et former la nouvelle génération de développeurs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item pl-8 relative">
+                        <div class="absolute -left-2 mt-2 w-4 h-4 rounded-full bg-neonPurple border-4 border-darkBg z-10"></div>
+                        <div class="bg-cardBg rounded-xl p-6 border border-neonCyan border-opacity-20">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-3 bg-neonPurple bg-opacity-10 p-3 rounded-lg">
+                                    <i class="fas fa-robot text-neonPurple text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">TEKBOT</h3>
+                                    <p class="text-gray-400">Ingénieur IoT | 2021 - 2022</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">
+                                Contribution à la conception et programmation de robots intelligents pour des compétitions régionales, 
+                                en utilisant la programmation embarquée et des algorithmes d'autonomie.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item pl-8 relative">
+                        <div class="absolute -left-2 mt-2 w-4 h-4 rounded-full bg-neonPurple border-4 border-darkBg z-10"></div>
+                        <div class="bg-cardBg rounded-xl p-6 border border-neonCyan border-opacity-20">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-3 bg-neonCyan bg-opacity-10 p-3 rounded-lg">
+                                    <i class="fas fa-laptop-code text-neonCyan text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Hackathon Gagnant</h3>
+                                    <p class="text-gray-400">1ère place | 2023</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">
+                                Remporté un hackathon avec une solution innovante combinant IoT et IA pour optimiser la consommation énergétique 
+                                des bâtiments intelligents.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item pl-8 relative">
+                        <div class="absolute -left-2 mt-2 w-4 h-4 rounded-full bg-neonPurple border-4 border-darkBg z-10"></div>
+                        <div class="bg-cardBg rounded-xl p-6 border border-neonCyan border-opacity-20">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-3 bg-neonPurple bg-opacity-10 p-3 rounded-lg">
+                                    <i class="fas fa-chalkboard-teacher text-neonPurple text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Mentor en Programmation</h3>
+                                    <p class="text-gray-400">EPITECH Learning Center | 2022 - Présent</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">
+                                Aide les étudiants de première année à maîtriser les concepts fondamentaux du développement en C et C++ à travers 
+                                des ateliers pratiques et des sessions de code reviews.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+                    Contact
+                    <div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neonPurple to-transparent -bottom-2"></div>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-400">Discutons de votre prochain projet ou d'opportunités de collaboration</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-cardBg rounded-2xl p-8">
+                        <form id="contact-form" action="https://formsubmit.co/el/revira" method="POST" novalidate>
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://andysags13.github.io/merci.html">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-300 mb-2">Votre Nom <span class="text-neonPurple">*</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true" class="w-full px-4 py-3 bg-darkBg rounded-lg border border-neonCyan border-opacity-30 focus:border-neonPurple focus:ring-1 focus:ring-neonPurple outline-none text-white">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-300 mb-2">Votre Email <span class="text-neonPurple">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" class="w-full px-4 py-3 bg-darkBg rounded-lg border border-neonCyan border-opacity-30 focus:border-neonPurple focus:ring-1 focus:ring-neonPurple outline-none text-white">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-300 mb-2">Sujet <span class="text-neonPurple">*</span></label>
+                                <input type="text" id="subject" name="subject" required aria-required="true" class="w-full px-4 py-3 bg-darkBg rounded-lg border border-neonCyan border-opacity-30 focus:border-neonPurple focus:ring-1 focus:ring-neonPurple outline-none text-white">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-300 mb-2">Votre Message <span class="text-neonPurple">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-required="true" class="w-full px-4 py-3 bg-darkBg rounded-lg border border-neonCyan border-opacity-30 focus:border-neonPurple focus:ring-1 focus:ring-neonPurple outline-none text-white"></textarea>
+                            </div>
+                            <div class="mb-6 flex items-center">
+                                <input type="checkbox" id="consent" name="consent" required aria-required="true" class="mr-2">
+                                <label for="consent" class="text-gray-400 text-sm">J'accepte que mes informations soient utilisées pour me recontacter. <span class="text-neonPurple">*</span></label>
+                            </div>
+                            <button type="submit" class="w-full py-3 px-6 rounded-lg font-medium bg-gradient-to-r from-neonPurple to-purple-800 text-white hover:shadow-glow-hover transition-all flex items-center justify-center">
+                                Envoyer Message <i class="ml-2 fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gradient-to-br from-purple-900 to-darkBg border border-neonPurple border-opacity-30 rounded-2xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Mes Réseaux</h3>
+                        <p class="text-gray-300 mb-8">Vous pouvez me contacter directement ou via mes réseaux professionnels :</p>
+                        
+                        <div class="space-y-6">
+                            <a href="#" class="flex items-center group">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-linkedin bg-opacity-10 flex items-center justify-center mr-4 text-white text-xl">
+                                    <i class="fab fa-linkedin-in text-linkedin"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-neonCyan">LinkedIn</h4>
+                                    <p class="text-gray-400">@Andy SAGBO</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="flex items-center group">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4 text-white text-xl">
+                                    <i class="fab fa-github text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-neonCyan">GitHub</h4>
+                                    <p class="text-gray-400">/andysags13</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="flex items-center group">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center mr-4 text-white text-xl">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-neonCyan">Email</h4>
+                                    <p class="text-gray-400">andy.sagbo@epitech.eu</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="flex items-center group">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-twitter bg-opacity-10 flex items-center justify-center mr-4 text-twitter text-xl">
+                                    <i class="fab fa-twitter"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-neonCyan">Twitter</h4>
+                                    <p class="text-gray-400">@mon_handle</p>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="mt-10 bg-cardBg rounded-xl p-6 border border-neonCyan border-opacity-30">
+                            <h4 class="text-lg font-bold text-white mb-4">
+                                <i class="fas fa-code-branch text-neonPurple mr-2"></i> 
+                                Disponible pour de nouveaux défis
+                            </h4>
+                            <p class="text-gray-300">
+                                En recherche active de projets stimulants en développement système, fullstack ou IA. 
+                                Ouvert aux opportunités professionnelles et collaborations créatives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="h-8 w-8 rounded-full bg-neonPurple flex items-center justify-center">
+                        <div class="h-5 w-5 rounded-full bg-neonCyan"></div>
+                    </div>
+                    <span class="text-xl font-bold text-white">Portfolio</span>
+                </div>
+                
+                <div class="mt-6 md:mt-0 text-center text-gray-400">
+                    Étudiant EPITECH Bénin | Développeur Fullstack
+                </div>
+                
+                <div class="mt-6 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-neonCyan">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-neonCyan">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-neonCyan">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-neonCyan">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-10 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                © 2025 Portfolio | Tous droits réservés | Conçu avec <i class="fas fa-heart text-neonPurple mx-1"></i> pour la tech
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-neonPurple to-purple-800 text-white rounded-full shadow-lg opacity-0 invisible transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Animation des barres de compétences
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.dataset.width;
+                        entry.target.style.width = `${width}%`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        };
+        
+        // Gestion du scroll pour le bouton "Retour en haut"
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.remove('opacity-100', 'visible');
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Menu mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Fermer le menu mobile au clic sur un lien
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Effet de particules
+        const createParticles = () => {
+            const particles = document.getElementById('particles');
+            const count = 30;
+            
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute rounded-full';
+                
+                // Couleur au hasard (violet ou cyan)
+                const color = Math.random() > 0.5 ? 'bg-neonPurple' : 'bg-neonCyan';
+                particle.classList.add(color);
+                
+                // Taille au hasard
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Position au hasard
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Animation au hasard
+                particle.style.animation = `float ${Math.random() * 10 + 5}s infinite ease-in-out`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particles.appendChild(particle);
+            }
+        };
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSkillBars();
+            createParticles();
+            
+            // Smooth scroll pour les liens d'ancrage
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
