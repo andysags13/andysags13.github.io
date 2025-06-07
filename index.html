@@ -39,103 +39,7 @@
             }
         }
     </script>
-    <style>
-        /* Custom styles for extra effects */
-        body {
-            background-color: #0a0a10;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(188, 0, 221, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 60%, rgba(0, 240, 255, 0.1) 0%, transparent 25%);
-            color: #e0e0ff;
-            font-family: 'Space Grotesk', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #bc00dd, #00f0ff);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .neon-border {
-            border: 1px solid rgba(188, 0, 221, 0.3);
-            box-shadow: inset 0 0 10px rgba(188, 0, 221, 0.3);
-        }
-        
-        .skill-bar {
-            height: 6px;
-            background: linear-gradient(90deg, #bc00dd, #00f0ff);
-            border-radius: 10px;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px -12px rgba(0, 240, 255, 0.25);
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 2px;
-            background: linear-gradient(to bottom, #bc00dd, #00f0ff);
-        }
-        
-        .contact-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .contact-icon:hover {
-            transform: scale(1.1);
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
-        }
-        
-        .glow-text {
-            text-shadow: 0 0 10px rgba(188, 0, 221, 0.8);
-        }
-        
-        .hero-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #bc00dd, #00f0ff, transparent);
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
-            }
-            
-            .project-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .timeline-item {
-                padding-left: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
     <!-- Floating Particles Background -->
@@ -604,7 +508,7 @@
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="lg:w-1/2">
                     <div class="bg-cardBg rounded-2xl p-8">
-                        <form id="contact-form" action="https://formsubmit.co/el/revira" method="POST" novalidate>
+                        <form id="contact-form" action="https://formsubmit.co/el/revira" method="POST">
                             <input type="text" name="_honey" style="display:none">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://andysags13.github.io/merci.html">
@@ -675,10 +579,10 @@
                                 <div class="contact-icon w-12 h-12 rounded-full bg-twitter bg-opacity-10 flex items-center justify-center mr-4 text-twitter text-xl">
                                     <i class="fab fa-twitter"></i>
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <h4 class="text-lg font-bold text-white group-hover:text-neonCyan">Twitter</h4>
                                     <p class="text-gray-400">@mon_handle</p>
-                                </div>
+                                </div> -->
                             </a>
                         </div>
                         
