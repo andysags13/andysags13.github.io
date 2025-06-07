@@ -84,10 +84,11 @@ const createParticles = () => {
     }
 };
 
+
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // on empêche la soumission par défaut
+        e.preventDefault();
 
         console.log("🧠 Formulaire en cours de soumission...");
         console.log("Nom :", form.name.value);
@@ -96,7 +97,6 @@ const createParticles = () => {
         console.log("Message :", form.message.value);
         console.log("Consentement accepté :", form.consent.checked);
 
-        // Création des données à envoyer
         const formData = new FormData(form);
 
         try {
@@ -110,15 +110,17 @@ const createParticles = () => {
 
             if (response.ok) {
                 console.log("✅ Message envoyé !");
-                window.location.href = "merci.html"; // Redirection manuelle
+                // ✅ ici tu rediriges après succès
+                window.location.href = "merci.html";
             } else {
                 console.error("❌ Erreur lors de l'envoi :", response.statusText);
+                alert("Une erreur est survenue lors de l'envoi du message.");
             }
         } catch (error) {
             console.error("⚠️ Exception :", error);
+            alert("Erreur réseau. Merci de réessayer plus tard.");
         }
     });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     animateSkillBars();
