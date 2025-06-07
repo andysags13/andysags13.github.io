@@ -97,7 +97,7 @@ form.addEventListener('submit', (e) => {
     console.log("Consentement accepté :", form.consent.checked);
 
     // Si tu veux empêcher l'envoi temporairement pour tester
-    // e.preventDefault(); // ← décommente ça pour tester sans que FormSubmit prenne la main
+    e.preventDefault(); // ← décommente ça pour tester sans que FormSubmit prenne la main
 });
 
 // Initialisation
