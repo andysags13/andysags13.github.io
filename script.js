@@ -85,42 +85,31 @@ const createParticles = () => {
 };
 
 
-    const form = document.getElementById('contact-form');
+const form = document.getElementById('contact-form');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        console.log("🧠 Formulaire en cours de soumission...");
-        console.log("Nom :", form.name.value);
-        console.log("Email :", form.email.value);
-        console.log("Sujet :", form.subject.value);
-        console.log("Message :", form.message.value);
-        console.log("Consentement accepté :", form.consent.checked);
+    console.log("🧠 Formulaire en cours de soumission...");
+    const formData = new FormData(form);
 
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(form.action, {
-                method: "POST",
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                console.log("✅ Message envoyé !");
-                // ✅ ici tu rediriges après succès
-                window.location.href = "merci.html";
-            } else {
-                console.error("❌ Erreur lors de l'envoi :", response.statusText);
-                alert("Une erreur est survenue lors de l'envoi du message.");
+    try {
+        await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
             }
-        } catch (error) {
-            console.error("⚠️ Exception :", error);
-            alert("Erreur réseau. Merci de réessayer plus tard.");
-        }
-    });
+        });
+
+        // ✅ Peu importe la réponse, on redirige
+        console.log("✅ On redirige vers merci.html...");
+        window.location.href = "merci.html";
+    } catch (error) {
+        console.error("❌ Une erreur est survenue :", error);
+        alert("Erreur d'envoi. Vérifie ta connexion et réessaie.");
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     animateSkillBars();
