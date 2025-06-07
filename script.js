@@ -90,39 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof animateSkillBars === "function") animateSkillBars();
     if (typeof createParticles === "function") createParticles();
 
-    // Gestion du formulaire de contact
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            console.log("🧠 Formulaire en cours de soumission...");
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch(form.action, {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                // On vérifie si la requête s'est bien passée (statut 2xx)
-                if (!response.ok) {
-                    throw new Error(`Erreur serveur : ${response.status}`);
-                }
-
-                // ✅ Peu importe la réponse, on redirige
-                console.log("✅ On redirige vers merci.html...");
-                window.location.href = "merci.html";
-            } catch (error) {
-                console.error("❌ Une erreur est survenue :", error);
-                alert("Erreur d'envoi. Vérifie ta connexion et réessaie.");
-            }
-        });
-    }
-
     // Smooth scroll pour les liens d'ancrage
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
