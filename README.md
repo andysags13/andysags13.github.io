@@ -1,42 +1,20 @@
-# andysags13.github.io
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-Bienvenue sur le dépôt de mon portfolio personnel !
+# Run and deploy your AI Studio app
 
-## 🚀 Présentation
+This contains everything you need to run your app locally.
 
-Ce site web présente mon parcours, mes compétences et mes projets en tant que développeur passionné par le web et les nouvelles technologies. Vous y trouverez une interface moderne, des animations élégantes et une navigation fluide.
+View your app in AI Studio: https://ai.studio/apps/drive/18CPuSmg9yEMCYhVT5DgafSWTaDOcjUP2
 
-## ✨ Fonctionnalités
+## Run Locally
 
-- **Présentation personnelle** : Qui je suis, mon parcours et mes valeurs.
-- **Compétences** : Visualisation de mes compétences techniques avec des barres de progression animées.
-- **Projets** : Galerie de mes réalisations avec descriptions et liens.
-- **Parcours** : Frise chronologique de mes expériences et formations.
-- **Contact** : Moyens de me contacter facilement.
+**Prerequisites:**  Node.js
 
-## 🛠️ Technologies utilisées
 
-- **HTML5 & CSS3** (avec effets personnalisés et responsive design)
-- **JavaScript**
-- **[Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)** (Google Fonts)
-- **GitHub Pages** pour l’hébergement
-
-## 📦 Installation et utilisation
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/andysags13/andysags13.github.io.git
-   ```
-2. Ouvrez le dossier et lancez `index.html` dans votre navigateur préféré.
-
-## 👨‍💻 Contribution
-
-Les contributions sont les bienvenues ! N’hésitez pas à ouvrir une issue ou une pull request pour proposer des améliorations.
-
-## 📫 Contact
-
-Pour toute question ou opportunité, contactez-moi via [LinkedIn](https://www.linkedin.com/in/andy-sagbo-3599502aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) ou par email à andysags13@gmail.com.
-
----
-
-Merci de visiter mon portfolio ! 🌟
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
