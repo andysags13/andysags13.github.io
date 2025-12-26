@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
                     <span className="text-sys-text">{PERSONAL_INFO.subtitle}</span>
                 </p>
                 <div className="flex gap-4 text-xs tracking-widest">
-                    <span>STACK: C++ / REACT / IA</span>
+                    <span>STACK: C++ / C / React / Django / ...</span>
                     <span>LOC: BÉNIN</span>
                 </div>
             </motion.div>
@@ -71,8 +71,8 @@ const Hero: React.FC = () => {
       {/* Running text at bottom */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden py-2 bg-sys-panel border-t border-sys-border">
         <div className="whitespace-nowrap animate-[scan_20s_linear_infinite] font-mono text-xs text-sys-dim">
-            DIPLÔMÉ EPITECH /// EXPERTISE C++ /// INTÉGRATION IA GÉNÉRATIVE /// SYSTÈMES ROBOTIQUES /// ARCHITECTURE WEB /// DÉVELOPPEMENT FULL STACK /// 
-            DIPLÔMÉ EPITECH /// EXPERTISE C++ /// INTÉGRATION IA GÉNÉRATIVE /// SYSTÈMES ROBOTIQUES /// ARCHITECTURE WEB /// DÉVELOPPEMENT FULL STACK ///
+            EPITECH /// EXPERTISE C++ /// IA/// SYSTÈMES ROBOTIQUES /// ARCHITECTURE WEB /// DÉVELOPPEMENT FULL STACK /// 
+            EPITECH /// EXPERTISE C++ /// IA/// SYSTÈMES ROBOTIQUES /// ARCHITECTURE WEB /// DÉVELOPPEMENT FULL STACK ///
         </div>
       </div>
     </section>

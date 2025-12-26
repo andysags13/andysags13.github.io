@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="text-sys-dim">
-            STATUT SYSTÈME : <span className="text-sys-success">OPÉRATIONNEL</span>
+            STATUT SYSTÈME : <span className="text-sys-success">DISPONIBLE</span>
         </div>
 
         <div className="text-sys-dim">

@@ -10,9 +10,9 @@ const typeTranslations: Record<string, string> = {
 
 const Experience: React.FC = () => {
   return (
-    <section id="logs" className="py-24 bg-sys-dark">
+    <section id="experience" className="py-24 bg-sys-dark">
       <div className="max-w-5xl mx-auto px-4 md:px-8">
-        <SectionHeading title="LOGS SYSTÈME" number="04" subtitle="Historique d'Exécution" />
+        <SectionHeading title="EXPÉRIENCE" number="04" subtitle="Historique d'Exécution" />
 
         <div className="font-mono text-sm space-y-0">
           

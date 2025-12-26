@@ -3,6 +3,7 @@ import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 const CustomCursor: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
@@ -14,6 +15,7 @@ const CustomCursor: React.FC = () => {
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
+      setCoords({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -71,7 +73,7 @@ const CustomCursor: React.FC = () => {
         }}
       >
         <div className="text-[10px] font-mono text-sys-accent opacity-60">
-            X: {cursorX.get().toFixed(0)} <br/> Y: {cursorY.get().toFixed(0)}
+            X: {coords.x} <br /> Y: {coords.y}
         </div>
       </motion.div>
     </>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANDY SAGBO // ARCHITECTE_SYSTÈME</title>
+    <meta name="description" content="Portfolio d'Andy SAGBO - Développeur Expert C, C++, React, IA & Robotique" />
+    
+    <!-- Fonts: Clash Display (Brutalist) & JetBrains Mono (Code) -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Clash Display"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              sys: {
+                black: '#050505',
+                dark: '#0A0A0A',
+                panel: '#121212',
+                border: '#2A2A2A',
+                text: '#E0E0E0',
+                dim: '#666666',
+                accent: '#FF4D00', // International Orange
+                success: '#00FF94', // Terminal Green
+              }
+            },
+            backgroundImage: {
+              'grid-pattern': 'linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)',
+            },
+            animation: {
+              'spin-slow': 'spin 20s linear infinite',
+              'scan': 'scan 4s linear infinite',
+            },
+            keyframes: {
+              scan: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        color: #E0E0E0;
+        cursor: none;
+      }
+      a, button, input, textarea {
+        cursor: none;
+      }
+      
+      /* Selection Color */
+      ::selection {
+        background: #FF4D00;
+        color: #000;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0A0A0A;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #FF4D00; 
+      }
+
+      /* Utilities */
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        color: transparent;
+      }
+      .text-outline:hover {
+        -webkit-text-stroke: 1px #FF4D00;
+        color: transparent;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-DprivE-V.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>

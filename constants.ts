@@ -1,9 +1,10 @@
 import { Project, Experience, Skill, SocialLink } from './types';
+import.meta.env;
 
 export const PERSONAL_INFO = {
   name: "Andy SAGBO",
-  title: "Développeur & Créateur Tech",
-  subtitle: "IA • Logiciels • Robotique • Web",
+  title: "Développeur informatique",
+  subtitle: "IA • Architecture Logicielle • Robotique • Web",
   email: "andy.sagbo@epitech.eu",
   phone: "+229 01 41 71 51 01",
   location: "Cotonou, Bénin",
@@ -12,35 +13,41 @@ export const PERSONAL_INFO = {
 
 export const SKILLS: Skill[] = [
   // Languages
-  { name: "C", level: 90, category: "Languages", icon: "Code" },
+  { name: "C", level: 75, category: "Languages", icon: "Code" },
   { name: "C++", level: 85, category: "Languages", icon: "Code2" },
-  { name: "Haskell", level: 75, category: "Languages", icon: "Sigma" },
-  { name: "Python", level: 90, category: "Languages", icon: "FileCode" },
-  { name: "HTML/CSS", level: 95, category: "Languages", icon: "Layout" },
+  { name: "Haskell", level: 65, category: "Languages", icon: "Sigma" },
+  { name: "Python", level: 45, category: "Languages", icon: "FileCode" },
+  { name: "HTML/CSS", level: 90, category: "Languages", icon: "Layout" },
   // Frameworks
-  { name: "React", level: 85, category: "Frameworks", icon: "Atom" },
-  { name: "Laravel (PHP)", level: 80, category: "Frameworks", icon: "Server" },
-  { name: "Django", level: 80, category: "Frameworks", icon: "Layers" },
-  { name: "Tailwind CSS", level: 90, category: "Frameworks", icon: "Wind" },
+  { name: "React", level: 75, category: "Frameworks", icon: "Atom" },
+  { name: "Laravel (PHP)", level: 60, category: "Frameworks", icon: "Server" },
+  { name: "Django", level: 75, category: "Frameworks", icon: "Layers" },
   // Tools
-  { name: "Git & GitHub", level: 90, category: "Tools", icon: "GitBranch" },
-  { name: "Docker", level: 70, category: "Tools", icon: "Container" },
-  { name: "Bash / Zsh", level: 85, category: "Tools", icon: "Terminal" },
-  { name: "PostgreSQL", level: 80, category: "Tools", icon: "Database" },
+  { name: "Git & GitHub", level: 85, category: "Tools", icon: "GitBranch" },
+  { name: "Bash / Zsh", level: 65, category: "Tools", icon: "Terminal" },
+  { name: "Canva", level: 80, category: "Tools", icon: "Database" },
+  { name: "Arduino", level: 70, category: "Tools", icon: "Database" },
   // Core
-  { name: "IA Générative", level: 85, category: "Core", icon: "BrainCircuit" },
-  { name: "Robotique", level: 75, category: "Core", icon: "Bot" },
-  { name: "Algorithmie", level: 90, category: "Core", icon: "Cpu" },
+  { name: "Robotique de base", level: 60, category: "Core", icon: "Bot" },
+  { name: "Algorithmie", level: 80, category: "Core", icon: "Cpu" },
 ];
 
 export const PROJECTS: Project[] = [
   {
+    id: "vintage",
+    title: "Vintage Bénin",
+    description: "Développement du prototype plateforme e-commerce pour la vente de vêtements seconde main.",
+    technologies: ["React", "Firebase"],
+    category: "Web",
+    link: "https://vintage-benin.netlify.app/",
+  },
+  {
     id: "jeb-incubator",
     title: "Jeb Incubator",
-    description: "Création d'une plateforme web responsive complète pour un incubateur. Gestion avancée des utilisateurs et des projets.",
+    description: "Création d'une plateforme web responsive complète pour un incubateur. Gestion avancée des utilisateurs et des projets. API REST sécurisée. Base de données relationnelle.",
     technologies: ["React", "Django", "PostgreSQL", "API REST"],
     category: "Web",
-    link: "https://github.com/andysags",
+    link: "https://github.com/andysags13/Incubator",
   },
   {
     id: "arcade",
@@ -48,7 +55,7 @@ export const PROJECTS: Project[] = [
     description: "Architecture de jeux vidéo modulaire en C++. Gestion dynamique des bibliothèques graphiques (ncurses, SDL, SFML) et des jeux (Snake, Pacman) au runtime.",
     technologies: ["C++", "Design Patterns", "Shared Libraries", "Memory Management"],
     category: "Software",
-    link: "https://github.com/andysags",
+    link: "https://github.com/andysags13/arcade",
   },
   {
     id: "need4steak",
@@ -56,39 +63,36 @@ export const PROJECTS: Project[] = [
     description: "Simulation de conduite autonome. Développement d'une IA capable de piloter une voiture virtuelle en utilisant des capteurs LIDAR simulés.",
     technologies: ["C", "AI", "Simulation", "Algorithmie"],
     category: "AI",
-    link: "https://github.com/andysags",
-  },
-  {
-    id: "school-management",
-    title: "Gestion Scolaire Public",
-    description: "Système complet de gestion pour une école publique. Gestion des notes, des élèves et des enseignants avec différents niveaux d'accès.",
-    technologies: ["Laravel", "MySQL", "Blade", "AdminLTE"],
-    category: "Web",
-    link: "https://github.com/andysags",
-  },
-  {
-    id: "robotics-training",
-    title: "Formation Robotique",
-    description: "Conception de programmes éducatifs et encadrement de projets de création de voitures autonomes pour adolescents.",
-    technologies: ["Arduino", "C++ Embedded", "Electronics", "IoT"],
-    category: "Robotics",
-    link: "https://github.com/andysags",
+    link: "https://github.com/andysags/Need4Stek",
   },
 ];
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "epitech-hackathon",
-    role: "Gagnant Hackathon Santé",
-    company: "EPITECH BÉNIN",
+    id: "digital-valley",
+    role: "Formateur en Robotique",
+    company: "Digital Valley",
     location: "Cotonou",
-    period: "Mai 2024",
+    period: "Depuis Novembre 2025", 
     details: [
-      "Vainqueur sur le thème de la santé.",
-      "Prototypage rapide d'une solution web innovante.",
-      "Pitch devant un jury technique."
+      "Animation d'ateliers robotiques.",
+      "Mentorat technique pour la création de robots autonomes.",
+      "Vulgarisation de concepts IoT."
     ],
-    type: "Education"
+    type: "Professional"
+  },
+  {
+    id: "tekbot",
+    role: "Secrétaire général",
+    company: "TEKBOT EPITECH",
+    location: "Cotonou",
+    period: "Depuis Avril 2024", 
+    details: [
+      "Coordination des actions de l'association de robotique.",
+      "Organisation d'événements et workshops.",
+      "Gestion administrative."
+    ],
+    type: "Association"
   },
   {
     id: "cbox-sarl",
@@ -103,36 +107,18 @@ export const EXPERIENCES: Experience[] = [
     ],
     type: "Professional"
   },
-  {
-    id: "digital-valley",
-    role: "Formateur en Robotique",
-    company: "Digital Valley",
-    location: "Cotonou",
-    period: "Juillet - Août 2024", 
-    details: [
-      "Animation d'ateliers robotiques.",
-      "Mentorat technique pour la création de robots autonomes.",
-      "Vulgarisation de concepts IoT."
-    ],
-    type: "Professional"
-  },
-  {
-    id: "tekbot",
-    role: "Secrétaire & Membre Actif",
-    company: "TEKBOT EPITECH",
-    location: "Cotonou",
-    period: "Depuis Avril 2024", 
-    details: [
-      "Coordination des actions de l'association de robotique.",
-      "Organisation d'événements et workshops.",
-      "Gestion administrative."
-    ],
-    type: "Association"
-  }
 ];
 
 export const SOCIALS: SocialLink[] = [
   { platform: "GitHub", url: "https://github.com/andysags", icon: "Github" },
-  { platform: "LinkedIn", url: "https://linkedin.com/in/andy-sagbo", icon: "Linkedin" },
+  { platform: "LinkedIn", url: "https://www.linkedin.com/in/andy-sagbo-3599502aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", icon: "Linkedin" },
   { platform: "Email", url: "mailto:andy.sagbo@epitech.eu", icon: "Mail" },
 ];
+
+export const CONTACT_FORM = {
+  emailjs: {
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined,
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined,
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined,
+  },
+};

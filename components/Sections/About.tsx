@@ -18,20 +18,20 @@ const About: React.FC = () => {
                         alt="Profil" 
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute bottom-0 left-0 bg-sys-accent text-sys-black px-2 py-1 text-xs font-bold">
-                        IMG_REF_045
-                    </div>
+                        {/* <div className="absolute bottom-0 left-0 bg-sys-accent text-sys-black px-2 py-1 text-xs font-bold">
+                            IMG_REF_045
+                        </div> */}
                     {/* Crosshair overlay */}
                     <div className="absolute inset-0 border-[20px] border-transparent border-t-sys-black/50 border-b-sys-black/50 pointer-events-none"></div>
                 </div>
 
                 <div className="space-y-2 text-sm">
                     <div className="flex justify-between border-b border-sys-border pb-1">
-                        <span className="text-sys-dim">PROMOTION</span>
-                        <span className="text-sys-text">EXPERT 3</span>
+                        <span className="text-sys-dim">NIVEAU</span>
+                        <span className="text-sys-text">3E ANNÉE</span>
                     </div>
                     <div className="flex justify-between border-b border-sys-border pb-1">
-                        <span className="text-sys-dim">ORIGINE</span>
+                        <span className="text-sys-dim">ÉTABLISSEMENT</span>
                         <span className="text-sys-text">EPITECH BÉNIN</span>
                     </div>
                     <div className="flex justify-between border-b border-sys-border pb-1">
@@ -45,13 +45,12 @@ const About: React.FC = () => {
             <div className="md:col-span-8 flex flex-col justify-between">
                 <div>
                     <h3 className="font-display text-3xl mb-8 text-sys-text">
-                        Développeur passionné par la convergence entre <span className="text-sys-accent">l'algorithmique bas niveau</span> et <span className="text-sys-accent">l'intelligence artificielle</span>.
+                        Développeur passionné par <span className="text-sys-accent">la programmation</span> et <span className="text-sys-accent">l'intelligence artificielle</span>.
                     </h3>
                     <p className="font-mono text-sys-dim leading-relaxed mb-8 text-sm md:text-base text-justify">
-                        {PERSONAL_INFO.bio}
-                        <br/><br/>
-                        Mon approche est pragmatique : construire des systèmes robustes, optimisés et évolutifs. Que ce soit en C++ pour la performance brute ou en React pour des interfaces fluides, je vise toujours l'excellence technique.
-                    </p>
+                        {/* {PERSONAL_INFO.bio} */}
+                        {/* <br/><br/> */}
+Passionné par la programmation, la robotique et l’intelligence artificielle, je suis actuellement étudiant en 3ᵉ année d’expertise informatique à EPITECH. J’aime concevoir des solutions technologiques performantes en partant de problématiques complexes, avec une approche orientée efficacité et qualité logicielle.Mon travail repose sur un équilibre entre performance et modernité : du C/C++ pour des systèmes robustes et optimisés, jusqu’au développement web et à l’IA pour créer des applications évolutives et intuitives. Chaque projet est pour moi une opportunité de pousser l’exigence technique et d’aller au-delà des solutions standards.                    </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">

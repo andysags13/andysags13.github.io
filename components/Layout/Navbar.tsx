@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
     { label: 'À PROPOS', id: 'about' },
     { label: 'COMPÉTENCES', id: 'skills' },
     { label: 'PROJETS', id: 'projects' },
-    { label: 'LOGS', id: 'logs' },
+    { label: 'EXPERIENCE', id: 'experience' },
     { label: 'CONTACT', id: 'contact' }
   ];
 
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
         {/* Left: System ID */}
         <div className="flex items-center gap-4">
             <div className="w-2 h-2 bg-sys-success animate-pulse rounded-full"></div>
-            <span className="text-sys-text font-bold">SYS.AGBO_V3.0</span>
+            <span className="text-sys-text font-bold">SYS.SAGBO_ANDY.1</span>
         </div>
 
         {/* Center: Navigation */}
