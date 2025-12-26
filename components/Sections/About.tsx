@@ -14,7 +14,7 @@ const About: React.FC = () => {
             <div className="md:col-span-4 space-y-8 font-mono">
                 <div className="w-full aspect-square bg-sys-panel border border-sys-border relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
                     <img 
-                        src="/photo_pro.jpeg" 
+                        src={`${import.meta.env.BASE_URL}photo_pro.jpeg`} 
                         alt="Profil" 
                         className="w-full h-full object-cover"
                     />
