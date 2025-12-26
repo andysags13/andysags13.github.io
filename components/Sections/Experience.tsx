@@ -32,7 +32,7 @@ const Experience: React.FC = () => {
                 </div>
                 <div className="flex-grow">
                     <h4 className="text-sys-text font-bold text-base mb-1">
-                        {exp.role} @ {exp.company}
+                        {exp.role} @{exp.company}
                     </h4>
                     <ul className="text-sys-dim space-y-1 list-disc list-inside">
                         {exp.details.map((detail, i) => (

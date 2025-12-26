@@ -57,8 +57,13 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 }}
             >
-                <a href="#projects" className="group flex items-center gap-4 font-mono text-sys-text uppercase tracking-widest text-sm hover:text-sys-accent transition-colors">
-                    <span>INITIALISER_VUE_PROJET</span>
+                <a
+                    href="/cv.pdf"
+                    download
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 font-mono text-sys-text uppercase tracking-widest text-sm hover:text-sys-accent transition-colors"
+                >
+                    <span>TÉLÉCHARGER_CV</span>
                     <div className="w-12 h-12 border border-sys-border group-hover:border-sys-accent flex items-center justify-center rounded-none transition-colors">
                         <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
                     </div>
